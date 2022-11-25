@@ -4,7 +4,8 @@
 global username, password, name, user_choise
 
 
-# Login startUp func which calls Login method outside registration method 
+# Login startUp func which calls Login method outside registration method
+# Need to refactor code/ add check sys for login if data is not found  
 def Login_StartupOutside():
 
     print("Login process: ")
