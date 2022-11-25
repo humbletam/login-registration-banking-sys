@@ -4,8 +4,8 @@
 global username, password, name, user_choise
 
 
-# Login startUp func which calls Login method
-def Login_Startup():
+# Login startUp func which calls Login method outside registration method 
+def Login_StartupOutside():
 
     print("Login process: ")
 
@@ -25,16 +25,34 @@ def Login_Startup():
     
 # Registration func which calls Registration method 
 def Registration_StartUp():
+    # Login startUp func which calls Login method inside registration method 
+    def Login_StartUpInside():
 
+        print("Login process: ")
+
+        # Count var for login attempts
+        count = 0
+        while count < 3:
+            # New var for couting with data used var 
+            username_log = input("Username: ")
+            password_log = input("Password: ")
+
+            if username_log == username and password_log == password:
+                print("Access granted!")
+                break
+            else:
+                print("Access denied! Try again")
+                count += 1
+    
     print("Registration process: ")
 
-    username = input("Username: ")
+    username = input("Username: ")  
     password = input("Password: ")
     name = input("Enter your name: ")
 
     # This func checks if registration process passed or if failed returned the loop  
     if username and password and name != None:
-        Login_Startup()
+        Login_StartUpInside()
     else:
         print("Registration process failed, try again...")
         Registration_StartUp()
@@ -49,7 +67,7 @@ def StartUp():
 
     #User-choise check 
     if user_choise == 1:
-        Login_Startup()
+        Login_StartupOutside()
     elif user_choise == 2:
         Registration_StartUp()
     else:
