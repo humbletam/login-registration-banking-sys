@@ -1,4 +1,5 @@
 # Login/ Registration system 
+
 # Global variables 
 global username, password, name, user_choise
 
@@ -96,14 +97,16 @@ def Registration_StartUp():
 def StartUp():
 
     print("Welcome!")
-    # Integer value for user_choise
-    user_choise = int(input("Sing in [1] or Sing up [2]: "))
+    # String value for user_choise
+    user_choise = input("Sing in [1] or Sing up [2]: ")
 
     #User-choise check 
-    if user_choise == 1:
+    if user_choise == "1":
         Login_StartupOutside()
-    elif user_choise == 2:
+    elif user_choise == "2":
         Registration_StartUp()
+    elif user_choise == None:
+        print("Stand by...")
     else:
         print("Stand by...")
 
