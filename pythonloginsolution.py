@@ -1,8 +1,16 @@
 # Login/ Registration system 
-
 # Global variables 
 global username, password, name, user_choise
 
+# New credentials as Admin in Login sys
+username_admin = "sunflower"
+password_admin = "1000101"
+name_admin = "Rustam"
+
+# Standard credentials as User in Login sys
+username_user = "user"
+password_user = "123456"
+name_user = "User"
 
 # Login startUp func which calls Login method outside registration method
 # Need to refactor code/ add check sys for login if data is not found  
@@ -12,16 +20,27 @@ def Login_StartupOutside():
 
     # Count var for login attempts
     count = 0
-    while count < 4:
+    while count < 3:
         # New var for couting with data used var 
         username_log = input("Username: ")
         password_log = input("Password: ")
 
-        if username_log == username and password_log == password:
-            print("Access granted!")
+        # Login verification procces
+        # Sys checks if premade user inputs his credentials right - in that case: Premade user got access to the sys
+        if username_log == username_user and password_log == password_user:
+            print("Access granted! Welcome "+ name_user)
             break
+        # Sys checks who is in a sys - in that case: Admin correctly inputs this credetntials 
+        elif username_log == username_admin and password_log == password_admin:
+            print("Access granted! Admin panel... Welcome "+ name_admin)
+            break
+        # If username is incorrect - Access denied - user have 2 more tries 
+        elif username_log != username_admin and username_log != username_user:
+            print("Access denied! Incorrect username, try again...")
+            count += 1
+        # If password incorrect - Access denied - user have 2 more tries     
         else:
-            print("Access denied! Try again")
+            print("Access denied! Password incorrect, try again...")
             count += 1
     
 # Registration func which calls Registration method 
@@ -38,13 +57,27 @@ def Registration_StartUp():
             username_log = input("Username: ")
             password_log = input("Password: ")
 
+            # Sys checks if user inputs his credentials right - in that case: User got access to the sys
             if username_log == username and password_log == password:
-                print("Access granted!")
+                print("Access granted! Welcome "+ name )
                 break
-            else:
-                print("Access denied! Try again")
+            # Sys checks if premade user inputs his credentials right - in that case: Premade user got access to the sys
+            elif username_log == username_user and password_log == password_user:
+                print("Access granted! Welcome "+ name_user)
+                break
+            # Sys checks who is in a sys - in that case: Admin correctly inputs this credetntials 
+            elif username_log == username_admin and password_log == password_admin:
+                print("Access granted! Admin panel... Welcome "+ name_admin)
+                break
+            # If username is incorrect - Access denied - user have 2 more tries
+            elif username_log != username_admin and username_log != username_user and username_log != username:
+                print("Access denied! Incorrect username, try again...")
                 count += 1
-    
+            # If password incorrect - Access denied - user have 2 more tries
+            else:
+                print("Access denied! Password incorrect, try again...")
+                count += 1
+
     print("Registration process: ")
 
     username = input("Username: ")  
