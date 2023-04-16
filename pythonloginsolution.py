@@ -92,7 +92,6 @@ def Registration_StartUp():
         print("Registration process failed, try again...")
         Registration_StartUp()
 
-       
 # Basic function which calls a "Free-choise" 
 def StartUp():
 
@@ -111,4 +110,4 @@ def StartUp():
         print("Stand by...")
 
 
-StartUp()
+StartUp() 
